@@ -10,13 +10,19 @@
 .navbar {
       margin-bottom: 0;
       border-radius: 0;
-      background-color: rgb(204,255,204);
+      background-image: url(../src/images/navbar.jpg);
       border-style: none;
    }
 
 .container-fluid>.navbar-header>a {
-      color: black;
+      color: rgb(32,72,72);
    }
+
+#logo {
+    zoom: 10%;  
+}
+
+
 
 /*
 .spin-chevron {
