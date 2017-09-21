@@ -1,3 +1,36 @@
+body#allStyle{
+
+	width: 100%;
+	background-size: 150px 150px;
+	
+}
+
+#updown{
+  position: fixed;
+  left: 93%;
+  right: 0%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#downup{
+  position: fixed;
+  transform: rotate(-180deg);
+  left: 5%;
+  right: 0%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#downup:hover{
+	opacity: 0.5;
+}
+
+#updown:hover{
+	opacity: 0.5;
+}
+
+
 .dropdown:hover > .dropdown-menu { 
     display: block; 
     content: "\e080";
@@ -13,7 +46,7 @@
       border-style: none;
    }
 
-.container-fluid>.navbar-header>a {
+.container-fluid>.navbar-header>a, footer>p>a{
       color: rgb(32,72,72);
    }
 
@@ -21,22 +54,32 @@
     zoom: 10%;  
 }
 
-
-/*
-.spin-chevron {
-  -webkit-animation: spin 1s infinite linear;
-  animation: spin 1s infinite linear;
-  animation-iteration-count: 1;
-  animation-play-state: running;
+#phones{
+	font-size: 150%;
+	text-align:center;
 }
 
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(180deg);
-  }
+.dropdown:hover>a>span#glifup{
+	animation-name: rotateGlifup;
+    animation-duration: 1s;
+    transform: rotate(-180deg);
+
 }
 
 
-animation-play-state: running;
-animation-play-state: paused;
-*/
+@keyframes rotateGlifup {
+    from {transform: rotate(-0deg);}
+    to {transform: rotate(-180deg);}
+}
+
+.style-text, .style-text>a, .dropdown>a{
+	color: rgb(157,157,157);
+}
+
+.background-element{
+	background-color: rgb(34,34,34);
+}
+
+
+
+
