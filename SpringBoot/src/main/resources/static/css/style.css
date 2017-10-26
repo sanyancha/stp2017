@@ -1,0 +1,177 @@
+body{
+    background-image: url(../images/Wallpaper.jpg);
+}
+
+.navbar a, .dropdown-menu > li > a, .navbar p{
+  color: rgb(157,157,157);
+  font-size:24px;
+}
+
+.navbar li:hover, .navbar li>a:hover {
+  background-color: rgb(80,80,80);
+  color: white;
+}
+
+body#allStyle{
+
+	width: 100%;
+	background-size: 150px 150px;
+	
+}
+
+#updown{
+  position: fixed;
+  left: 93%;
+  right: 0%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#downup{
+  position: fixed;
+  transform: rotate(-180deg);
+  left: 5%;
+  right: 0%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#downup:hover{
+	opacity: 0.5;
+}
+
+#updown:hover{
+	opacity: 0.5;
+}
+
+
+.dropdown:hover > .dropdown-menu { 
+  display: block; 
+  content: "\e080";
+} 
+
+.glyphicon-chevron-down {
+  zoom: 80%;  
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  border-style: none;
+}
+
+.container-fluid>.navbar-header a{
+  color: rgb(32,72,72);
+  margin-top: 5px;
+}
+
+#logo {
+  zoom: 10%;  
+}
+
+#phones{
+	font-size: 150%;
+	text-align:center;
+}
+
+.dropdown:hover>a>span#glifup{
+	animation-name: rotateGlifup;
+  animation-duration: 1s;
+  transform: rotate(-180deg);
+
+}
+
+
+@keyframes rotateGlifup {
+  from {transform: rotate(-0deg);}
+  to {transform: rotate(-180deg);}
+}
+
+.style-text, .style-text>a, .dropdown>a{
+	color: rgb(157,157,157);
+}
+.background-element{
+	background-color: rgb(34,34,34);
+}
+
+.modal-dialog{
+  width: 40%;
+  margin-left: 30%;
+  
+}
+
+.modal-body>input{
+  width:40%;
+}
+
+.modal-header, .modal-footer > button, .col-sm-6 > button{
+  background-color: rgb(34,34,34);
+  color: rgb(157,157,157);
+  border: none;
+}
+
+ .modal-footer > input:hover, .modal-footer > button:hover, .col-sm-6 > button:hover{
+  background-color: grey;
+  color: black;
+ }
+
+.modal-footer {
+  padding-bottom: 0px;
+  height: 31px;
+}
+
+.modal-body{
+  padding-left: 2%;
+  padding-right: 10%;
+}
+
+#enter>.modal-dialog>.modal-content{
+   margin-right: 17%;
+    margin-left: 17%;
+   opacity: 1;
+   margin-top: 30%;
+}
+
+#registration>.modal-dialog>.modal-content{
+   margin-right: 4%;
+    margin-left: 7%;
+    margin-top: 30%;
+}
+
+
+#enter>.modal-dialog>.modal-content>.modal-body>.form-horizontal{
+   margin-right: 6%;
+    margin-left: 17%;
+}
+
+/*#registration>.modal-dialog>.modal-content>.modal-body>.form-horizontal{
+   margin-right: 10%;
+    margin-left: 17%;
+}*/
+
+
+
+#enter>.modal-dialog>.modal-content>.modal-body>.form-horizontal>.form-group>label{
+    left: -10%;
+}
+
+
+.form-group > textarea{
+  margin-left: 21%;
+  width: 75%; 
+  min-width:75%; 
+  max-width:75%; 
+
+  height:100px; 
+  min-height:100px;  
+  max-height:100px;
+}
+
+#help>.modal-dialog>.modal-content{
+   margin-right: 17%;
+    margin-left: 17%;
+   margin-top: 30%;
+}
+
+
+
