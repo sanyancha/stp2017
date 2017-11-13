@@ -36,3 +36,63 @@ function myMap() {
     title: 'Relax Laboratory'
   });
  }
+ 
+ function getAllCourses() {
+     if(!$('#allCources').hasClass('in')) {
+         $.ajax({
+             async: true,
+             cache: false,
+             url: '/get-all-course',
+             method: 'GET',
+             data: {},
+             success: function (data) {
+                 alert(data);
+             },
+             error: function (message) {
+                 alert(message);
+             }
+         });
+     }
+ }
+
+function getSelectionCourses() {
+    if(!$('#selectionOpen').hasClass('in')) {
+        $.ajax({
+            async: true,
+            cache: false,
+            url: '/get-selection-open-course',
+            method: 'GET',
+            data: {},
+            success: function (data) {
+                alert(data);
+            },
+            error: function (message) {
+                alert(message);
+            }
+        });
+    }
+}
+
+function getPlannedCourses() {
+    if(!$('#plannedCourses').hasClass('in')) {
+        $.ajax({
+            async: true,
+            cache: false,
+            url: '/get-planned-course',
+            method: 'GET',
+            data: {},
+            success: function (data) {
+                alert(data);
+            },
+            error: function (message) {
+                alert(message);
+            }
+        });
+    }
+}
+
+function scrollOn(idObj)
+{
+    var element = document.getElementById(idObj);
+    element.scrollIntoView(true);
+}
