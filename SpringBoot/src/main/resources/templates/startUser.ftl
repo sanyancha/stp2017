@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="css\styleUser.css">
     <script src="js\main.js"></script>
     <script src="js\user.js"></script>
-    <script src="js\validator\signUpValidator.js"></script>
-    <script src="js\validator\signInValidator.js"></script>
     <script src="bootstrap/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="bootstrap\bootstrap-3.3.7\dist\js\bootstrap.min.js"></script>
 </head>
 <body id="allStyle">
 
 <#include "fragments/background.ftl">
+
 <br/>
+
 <!--Классы navbar и navbar-default &ndash;&gt;-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <!--Контейнер &ndash;&gt;-->
@@ -33,7 +33,7 @@
             </button>
             <!--Бренд или название сайта &ndash;&gt;-->
 
-           <a style="color: rgb(32,72,72);" class="noneCursor"><img src="images/logotype.png" alt="Logotip" id="logo">Relax Laboratory</a>
+            <a style="color: rgb(32,72,72);" <#--class="noneCursor"--> href="/user-home"><img src="images/logotype.png" alt="Logotip" id="logo">Relax Laboratory</a>
         </div>
         <!--Основная часть меню &ndash;&gt;-->
         <div class="collapse navbar-collapse" id="navbar-main">
@@ -46,19 +46,19 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">My cources <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                     <ul class="dropdown-menu background-element">
                         <li>
-                            <a href="#">
+                            <a href="/join-courses">
                                 <span class="glyphicon glyphicon-plus-sign"></span>
                                 &nbsp;Join
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/leave-courses">
                                 <span class="glyphicon glyphicon-minus-sign"></span>
                                 &nbsp;Leave
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:scrollOn('scrollOnVisited');" data-toggle="collapse" data-target="#visitedCourses">
+                            <a onclick="getVisitedCourses()" href="javascript:scrollOn('scrollOnVisited');" data-toggle="collapse" data-target="#visitedCourses">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 &nbsp;Visited
                             </a>
@@ -69,19 +69,19 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cources <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                     <ul class="dropdown-menu background-element">
                         <li >
-                            <a onclick="getAllCourses()" href="javascript:scrollOn('scrollOnAllCourses');" data-toggle="collapse" data-target="#allCources">
+                            <a onclick="getAllCourses()" data-toggle="collapse">
                                 <span class="glyphicon glyphicon-th-list"></span>
                                 &nbsp;All available
                             </a>
                         </li>
                         <li >
-                            <a onclick="getSelectionCourses()" href="javascript:scrollOn('scrollOnSelectionOpen');" data-toggle="collapse" data-target="#selectionOpen">
+                            <a onclick="getSelectionCourses()" data-toggle="collapse">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 &nbsp;Selection open
                             </a>
                         </li>
                         <li>
-                            <a onclick="getPlannedCourses()" href="javascript:scrollOn('scrollOnPlanned');" data-toggle="collapse" data-target="#plannedCourses">
+                            <a onclick="getPlannedCourses()" data-toggle="collapse">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 &nbsp;Planned
                             </a>
@@ -92,7 +92,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                     <ul class="dropdown-menu background-element">
                         <li >
-                            <a href="#">
+                            <a onclick="getUserInfo()" href="#">
                                 <span class="glyphicon glyphicon-info-sign"></span>
                                 &nbsp;Information
                             </a>
@@ -132,6 +132,7 @@
         </div>
     </div>
 </nav>
+
 
 <br>
 
@@ -176,7 +177,7 @@
                 <div class="carousel-inner">
 
                     <div class="item active">
-                        <a href="javascript:scrollSituation();" id = "python"> <img src="images/python.jpg" alt="python" style="width:100%;"></a>
+                        <a href="javascript:scrollPython();" id = "python"> <img src="images/python.jpg" alt="python" style="width:100%;"></a>
                     </div>
 
                     <div class="item">
@@ -299,54 +300,30 @@
 
     <h1>List courses our company</h1>
 
-<div class="row content">
-    <div class="col-sm-2 col-xs-2 sidenav">
+    <div class="row content">
+        <div class="col-sm-2 col-xs-2 sidenav">
 
+        </div>
+        <div class="col-sm-8 col-xs-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Course Name</th>
+                    <th>Total listeners quantity</th>
+                    <th>Hours</th>
+                    <th>Day in week</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
+                </tr>
+                </thead>
+                <tbody class="all-courses-list">
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#allCources">Close list courses</button>
+        </div>
+        <div class="col-sm-2 col-xs-2 sidenav">
+        </div>
     </div>
-    <div class="col-sm-8 col-xs-8">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Course Name</th>
-                <th>Total listeners quantity</th>
-                <th>Hours</th>
-                <th>Day in week</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Java</td>
-                <td>50</td>
-                <td>328</td>
-                <td>2</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Java</td>
-                <td>50</td>
-                <td>328</td>
-                <td>2</td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Java</td>
-                <td>50</td>
-                <td>328</td>
-                <td>2</td>
-                <td>500</td>
-            </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#allCources">Close list courses</button>
-    </div>
-    <div class="col-sm-2 col-xs-2 sidenav">
-    </div>
-</div>
 </div>
 
 <div id="scrollOnSelectionOpen"></div>
@@ -367,40 +344,14 @@
                     <th>#</th>
                     <th>Course Name</th>
                     <th>Start date</th>
+                    <th>Finish date</th>
                     <th>Total listeners quantity</th>
                     <th>Hours</th>
                     <th>Day in week</th>
-                    <th>Price</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
+                <tbody class="open-courses-list">
                 </tbody>
             </table>
             <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#selectionOpen">Close selection open courses</button>
@@ -428,40 +379,14 @@
                     <th>#</th>
                     <th>Course Name</th>
                     <th>Start date</th>
+                    <th>Finish date</th>
                     <th>Total listeners quantity</th>
                     <th>Hours</th>
                     <th>Day in week</th>
-                    <th>Price</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
+                <tbody class="planned-courses-list">
                 </tbody>
             </table>
             <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#plannedCourses">Close planned courses</button>
@@ -635,14 +560,135 @@
 </div>
 
 
-
 <footer class="container-fluid text-center background-element ndra-container" id="foot">
     <br>
 
-    <p class="style-text"> <a href="#">Join course
-    </a> | <a href="#">Leave course</a> | <a href="#">Add balance</a> | <a href="/">Sign out</a> </p>
+    <p class="style-text"> <a href="/join-courses">Join course
+    </a> | <a href="/leave-courses">Leave course</a> | <a href="#">Add balance</a> | <a href="/">Sign out</a> </p>
     <p class="style-text">© ${nowYear} RelaxLaboratory.com | All rights reserved | Contact number <span class="glyphicon glyphicon-phone-alt"></span> 42-78-58</p>
 </footer>
+
+
+
+
+<div id="account-info" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">&nbsp;Account information</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+
+                    <div class="row">
+                        <p class="col-sm-4" >Name:</p>
+                        <p class="col-sm-8" id="ajaxName"></p>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-sm-4">Login:</p>
+                        <p class="col-sm-8" id="ajaxLogin"></p>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-sm-4">Mobile:</p>
+                        <p class="col-sm-8" id="ajaxMobile"></p>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-sm-4">Balance:</p>
+                        <p class="col-sm-8" id="ajaxBalance"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="success-operation" class="modal fade" role="dialog" style="margin-top: 15%;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">&nbsp;Success operation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div><h3 class="col-sm-10" style="color: green; text-align: center">Operation was successful!</h3></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="data-info-operation" class="modal fade" role="dialog" style="margin-top: 15%;">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">&nbsp;User informstion</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div><h3 class="col-sm-10" style="text-align: center" id="data-info"></h3></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#if errors == 10>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#success-operation").modal("show");
+    });
+
+</script>
+
+</#if>
+
+<#if errors == 20>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        document.getElementById("data-info").innerHTML = "";
+        document.getElementById("data-info").innerHTML = "You don't have any availible courses at these moment!";
+         $("#data-info-operation").modal("show");
+    });
+
+</script>
+
+</#if>
+
+<#if errors == 30>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        document.getElementById("data-info").innerHTML = "";
+        document.getElementById("data-info").innerHTML = "You don't have any courses to LEAVE at these moment!";
+        $("#data-info-operation").modal("show");
+    });
+
+</script>
+
+</#if>
+
 
 </body>
 </html>

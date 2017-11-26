@@ -18,22 +18,8 @@ public class CourseController {
 
     @GetMapping("/get-all-course")
     @ResponseBody
-    public String getAllCourses() {
-        /*List<Course> allCourses =  courseService.getAllCourses();*/
-        return "String get all courses";
+    public List<Course> getAllCourses() {
+        return courseService.getAllCourses();
     }
 
-    @GetMapping("/get-selection-open-course")
-    @ResponseBody
-    public String getSelectionOpenCourses() {
-
-        return "String get selection open courses";
-    }
-
-    @GetMapping("/get-planned-course")
-    @ResponseBody
-    public String getPlannedCourses() {
-
-        return "String get planned courses";
-    }
 }

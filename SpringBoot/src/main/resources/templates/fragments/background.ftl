@@ -1,3 +1,7 @@
+<a href="#top"><img src="images\updown3-1.png" id="updown" height=5% width=3%></a>
+
+<a href="#foot"><img src="images\updown3-1.png" id="downup" height=5% width=3%></a>
+
 <script type="text/javascript">
     $(function() {
 
@@ -19,7 +23,3 @@
 
     });
 </script>
-
-<a href="#top"><img src="images\updown3-1.png" id="updown" height=5% width=3%></a>
-
-<a href="#foot"><img src="images\updown3-1.png" id="downup" height=5% width=3%></a>

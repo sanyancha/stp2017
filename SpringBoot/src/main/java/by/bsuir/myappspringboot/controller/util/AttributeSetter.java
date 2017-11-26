@@ -1,9 +1,11 @@
 package by.bsuir.myappspringboot.controller.util;
 
+import by.bsuir.myappspringboot.entity.CourseTimetable;
 import org.springframework.ui.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public final class AttributeSetter {
 
@@ -31,9 +33,18 @@ public final class AttributeSetter {
         model.addAttribute("nowYear", dateFormat.format(new Date()));
     }
 
-    public static void setUserAttributes(Model model, double balance, String name){
+    public static void setUserAttributes(Model model, double balance, String name,int errors){
         model.addAttribute("balance",balance);
         model.addAttribute("name",name);
+        model.addAttribute("errors",errors);
         model.addAttribute("nowYear", dateFormat.format(new Date()));
     }
+
+    public static void setAvailibleCources(Model model, List<CourseTimetable> courseTimetable, int error){
+        model.addAttribute("courseTimetable",courseTimetable);
+        model.addAttribute("countCourses",courseTimetable.size());
+        model.addAttribute("error",error);
+    }
+
+
 }

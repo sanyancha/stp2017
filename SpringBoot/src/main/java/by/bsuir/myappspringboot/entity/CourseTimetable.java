@@ -1,5 +1,9 @@
 package by.bsuir.myappspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,9 +15,16 @@ public class CourseTimetable implements Serializable {
 
     private int id;
     private Course course;
+
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date startDate;
+
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date finishDate;
-    private boolean isOpen;
+
+    private boolean open;
+
+    @JsonIgnore
     private Set<User> users;
 
     public CourseTimetable() {
@@ -59,11 +70,11 @@ public class CourseTimetable implements Serializable {
 
     @Column(name = "is_open")
     public boolean isOpen() {
-        return isOpen;
+        return open;
     }
 
     public void setOpen(boolean open) {
-        isOpen = open;
+        this.open = open;
     }
 
     @ManyToMany(mappedBy = "timetables", fetch = FetchType.EAGER)
@@ -82,7 +93,8 @@ public class CourseTimetable implements Serializable {
                 ", course=" + course.getName() +
                 ", startDate=" + startDate +
                 ", finishDate=" + finishDate +
-                ", isOpen=" + isOpen +
+                ", isOpen=" + open +
                 '}';
     }
+
 }

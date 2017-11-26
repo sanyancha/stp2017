@@ -46,10 +46,24 @@ function myMap() {
              method: 'GET',
              data: {},
              success: function (data) {
-                 alert(data);
+                 $(".all-courses-list").empty();
+                 $.each(data, function(i, obj) {
+                     $(".all-courses-list").append(
+                         "<tr>" +
+                         "<td>"+ (i + 1) +"</td>" +
+                         "<td>"+obj.name+"</td>" +
+                         "<td>"+obj.listenersQuantity+"</td>" +
+                         "<td>"+obj.hours+"</td>" +
+                         "<td>"+obj.dayWeek+"</td>" +
+                         "<td>"+obj.price+"</td>" +
+                         "</tr>"
+                     );
+                 });
+                 scrollOn('scrollOnAllCourses');
+                 $("#allCources").collapse('show');
              },
-             error: function (message) {
-                 alert(message);
+             error: function () {
+                 alert("Connection error");
              }
          });
      }
@@ -64,10 +78,26 @@ function getSelectionCourses() {
             method: 'GET',
             data: {},
             success: function (data) {
-                alert(data);
+                $(".open-courses-list").empty();
+                $.each(data, function(i, obj) {
+                    $(".open-courses-list").append(
+                        "<tr>" +
+                        "<td>"+ (i + 1) +"</td>" +
+                        "<td>"+obj.course.name+"</td>" +
+                        "<td>"+obj.startDate+"</td>" +
+                        "<td>"+obj.finishDate+"</td>" +
+                        "<td>"+obj.course.listenersQuantity+"</td>" +
+                        "<td>"+obj.course.hours+"</td>" +
+                        "<td>"+obj.course.dayWeek+"</td>" +
+                        "<td>"+obj.course.price+"</td>" +
+                        "</tr>"
+                    );
+                });
+                scrollOn('scrollOnSelectionOpen');
+                $("#selectionOpen").collapse('show');
             },
-            error: function (message) {
-                alert(message);
+            error: function () {
+                alert("Connection error");
             }
         });
     }
@@ -82,10 +112,28 @@ function getPlannedCourses() {
             method: 'GET',
             data: {},
             success: function (data) {
-                alert(data);
+                $(".planned-courses-list").empty();
+                var date;
+
+                $.each(data, function(i, obj) {
+                    $(".planned-courses-list").append(
+                        "<tr>" +
+                        "<td>"+ (i + 1) +"</td>" +
+                        "<td>"+obj.course.name+"</td>" +
+                        "<td>"+obj.startDate+"</td>" +
+                        "<td>"+obj.finishDate+"</td>" +
+                        "<td>"+obj.course.listenersQuantity+"</td>" +
+                        "<td>"+obj.course.hours+"</td>" +
+                        "<td>"+obj.course.dayWeek+"</td>" +
+                        "<td>"+obj.course.price+"</td>" +
+                        "</tr>"
+                    );
+                });
+                scrollOn('scrollOnPlanned');
+                $("#plannedCourses").collapse('show');
             },
-            error: function (message) {
-                alert(message);
+            error: function () {
+                alert("Connection error");
             }
         });
     }

@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @RunWith(SpringRunner.class)
@@ -31,7 +32,7 @@ public class MyappspringbootApplicationTests {
 	@Test
 	public void contextLoads() {
 		//System.out.println(userRepository.findOne(1));
-		for (CourseTimetable ct : userRepository.findOne(1).getTimetables()) {
+		/*for (CourseTimetable ct : userRepository.findOne(1).getTimetables()) {
 			System.out.println(ct);
 		}
 
@@ -47,7 +48,27 @@ public class MyappspringbootApplicationTests {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
 		System.out.println("Now date");
-		System.out.println(dateFormat.format(new Date()));
+		System.out.println(dateFormat.format(new Date()));*/
+
+		System.out.println("courses");
+		for (CourseTimetable u : courseTimeTableRepository.findAllByOpen(false)) {
+			System.out.println(u.getCourse());
+		}
+		/*
+		System.out.println("-----------");
+		System.out.println("Start");
+		Date startDate = new Date();
+
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, 1);
+
+		Date finishDate = cal.getTime();
+
+		for (CourseTimetable u : courseTimeTableRepository.findAllByStartDateBetween(startDate,finishDate)) {
+			System.out.println(u.getCourse());
+		}
+*/
+
 	}
 
 }

@@ -43,19 +43,19 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cources <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                 <ul class="dropdown-menu background-element">
                     <li >
-                        <a onclick="getAllCourses()" href="javascript:scrollOn('scrollOnAllCourses');" data-toggle="collapse" data-target="#allCources">
+                        <a onclick="getAllCourses()" data-toggle="collapse">
                             <span class="glyphicon glyphicon-list"></span>
                             &nbsp;All available
                         </a>
                     </li>
                     <li >
-                        <a onclick="getSelectionCourses()" href="javascript:scrollOn('scrollOnSelectionOpen');" data-toggle="collapse" data-target="#selectionOpen">
+                        <a onclick="getSelectionCourses()" data-toggle="collapse">
                             <span class="glyphicon glyphicon-pencil"></span>
                             &nbsp;Selection open
                         </a>
                     </li>
                     <li>
-                        <a onclick="getPlannedCourses()" href="javascript:scrollOn('scrollOnPlanned');" data-toggle="collapse" data-target="#plannedCourses">
+                        <a onclick="getPlannedCourses()" data-toggle="collapse">
                             <span class="glyphicon glyphicon-calendar"></span>
                             &nbsp;Planned
                         </a>
@@ -180,34 +180,10 @@
                     <th>Total listeners quantity</th>
                     <th>Hours</th>
                     <th>Day in week</th>
-                    <th>Price</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
+                <tbody class="all-courses-list">
                 </tbody>
             </table>
             <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#allCources">Close list courses</button>
@@ -235,40 +211,14 @@
                     <th>#</th>
                     <th>Course Name</th>
                     <th>Start date</th>
+                    <th>Finish date</th>
                     <th>Total listeners quantity</th>
                     <th>Hours</th>
                     <th>Day in week</th>
-                    <th>Price</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
+                <tbody class="open-courses-list">
                 </tbody>
             </table>
             <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#selectionOpen">Close selection open courses</button>
@@ -296,40 +246,14 @@
                     <th>#</th>
                     <th>Course Name</th>
                     <th>Start date</th>
+                    <th>Finish date</th>
                     <th>Total listeners quantity</th>
                     <th>Hours</th>
                     <th>Day in week</th>
-                    <th>Price</th>
+                    <th>Price,&nbsp;<span class="glyphicon glyphicon-usd"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Java</td>
-                    <td>11.11.2017</td>
-                    <td>50</td>
-                    <td>328</td>
-                    <td>2</td>
-                    <td>500</td>
-                </tr>
+                <tbody class="planned-courses-list">
                 </tbody>
             </table>
             <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#plannedCourses">Close planned courses</button>

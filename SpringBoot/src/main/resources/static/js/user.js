@@ -90,3 +90,54 @@ function hideAll(){
 	$("#collapse8").collapse('hide');
 	$("#collapse9").collapse('hide');
 }
+
+function getUserInfo() {
+        $.ajax({
+            async: true,
+            cache: false,
+            url: '/get-user-info',
+            method: 'GET',
+            data: {},
+            success: function (data) {
+                $("#ajaxName").empty();
+                $("#ajaxLogin").empty();
+                $("#ajaxMobile").empty();
+                $("#ajaxBalance").empty();
+
+                $("#ajaxName").append(
+                    data.name
+                );
+                $("#ajaxLogin").append(
+                    data.login
+                );
+                $("#ajaxMobile").append(
+                    data.mobile
+                );
+                $("#ajaxBalance").append(
+                    data.balance + "$"
+                );
+                $("#account-info").modal("show");
+            },
+            error: function () {
+                alert("Connection error");
+            }
+        });
+}
+
+function getVisitedCourses(){
+    if(!$('#visitedCourses').hasClass('in')) {
+        $.ajax({
+            async: true,
+            cache: false,
+            url: '/get-visited-courses',
+            method: 'GET',
+            data: {},
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert("Connection error");
+            }
+        });
+    }
+}

@@ -1,5 +1,7 @@
 package by.bsuir.myappspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -14,6 +16,8 @@ public class User implements Serializable {
     private String password;
     private String mobile;
     private double balance;
+
+    @JsonIgnore
     private Set<CourseTimetable> timetables;
 
     public User() {

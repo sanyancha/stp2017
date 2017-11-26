@@ -1,7 +1,10 @@
 package by.bsuir.myappspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,6 +16,8 @@ public class Course implements Serializable {
     private int listenersQuantity;
     private int hours;
     private int dayWeek;
+
+    @JsonIgnore
     private Set<CourseTimetable> timetables;
 
     public Course() {
@@ -77,7 +82,7 @@ public class Course implements Serializable {
                 ", listenersQuantity=" + listenersQuantity +
                 ", hours=" + hours +
                 ", dayWeek=" + dayWeek +
-                ", timetables=" + timetables +
                 '}';
     }
+
 }

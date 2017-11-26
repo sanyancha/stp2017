@@ -1,0 +1,14 @@
+.center-text{
+    text-align: center;
+}
+
+#account-info > .modal-dialog{
+    width: 20%;
+    margin-left: 42.5%;
+    margin-top: 15%;
+
+}
+
+#account-info > div > div > div > form > div > p{
+    font-size: large;
+}

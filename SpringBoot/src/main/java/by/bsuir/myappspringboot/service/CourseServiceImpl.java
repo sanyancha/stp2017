@@ -18,4 +18,5 @@ public class CourseServiceImpl implements CourseService {
         List<Course> listCourses = courseRepository.findAll();
         return listCourses;
     }
+
 }

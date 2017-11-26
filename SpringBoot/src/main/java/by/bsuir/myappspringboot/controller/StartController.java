@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,8 +18,9 @@ import java.util.List;
 public class StartController {
 
     @RequestMapping("/")
-    public String privet(Model model){
+    public String privet(Model model, HttpServletRequest request){
         AttributeSetter.setAttributes(model,false,0);
+        request.getSession().removeAttribute("user");
         return "startPage";
     }
 
