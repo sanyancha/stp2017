@@ -3,8 +3,10 @@ package by.bsuir.myappspringboot;
 import by.bsuir.myappspringboot.entity.Course;
 import by.bsuir.myappspringboot.entity.CourseTimetable;
 import by.bsuir.myappspringboot.entity.User;
+import by.bsuir.myappspringboot.entity.UserPaynment;
 import by.bsuir.myappspringboot.repository.CourseRepository;
 import by.bsuir.myappspringboot.repository.CourseTimetableRepository;
+import by.bsuir.myappspringboot.repository.UserPaynmentRepository;
 import by.bsuir.myappspringboot.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,6 +29,9 @@ public class MyappspringbootApplicationTests {
 
 	@Autowired
 	private CourseRepository courseRepository;
+
+	@Autowired
+	private UserPaynmentRepository userPaynmentRepository;
 
 	@Autowired
 	private CourseTimetableRepository courseTimeTableRepository;
@@ -50,10 +57,31 @@ public class MyappspringbootApplicationTests {
 		System.out.println("Now date");
 		System.out.println(dateFormat.format(new Date()));*/
 
-		System.out.println("courses");
+		/*System.out.println("courses");
 		for (CourseTimetable u : courseTimeTableRepository.findAllByOpen(false)) {
 			System.out.println(u.getCourse());
+		}*/
+
+		System.out.println("paynment");
+		System.out.println(userPaynmentRepository.findAll());
+
+		ArrayList<UserPaynment> paynments = (ArrayList<UserPaynment>) userPaynmentRepository.findAll();
+
+		List list = new ArrayList();
+
+		for (UserPaynment up:paynments){
+			list.add(up);
 		}
+
+		System.out.println(list);
+
+		for (UserPaynment up : userPaynmentRepository.findAll()) {
+			System.out.println(up);
+		}
+
+
+
+
 		/*
 		System.out.println("-----------");
 		System.out.println("Start");

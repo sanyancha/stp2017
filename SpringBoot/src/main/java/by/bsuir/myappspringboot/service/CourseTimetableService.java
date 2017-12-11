@@ -15,4 +15,5 @@ public interface CourseTimetableService {
     int joinUserCourses(User user,ArrayList<Integer> listCourses);
     List<CourseTimetable> getUserCoursesToLeave(User user);
     int leaveUserCourses(User user,ArrayList<Integer> idCourses);
+    List<CourseTimetable> getMyCourses(User user);
 }

@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="css\style.css">
     <link rel="stylesheet" href="css\styleUser.css">
     <script src="js\main.js"></script>
+    <script src="js\user.js"></script>
     <script src="js\joinOrLeaveCourse.js"></script>
     <script src="bootstrap/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="bootstrap\bootstrap-3.3.7\dist\js\bootstrap.min.js"></script>
 </head>
 <body id="allStyle">
 <#setting date_format="dd-MM-yyyy">
+<br id="top"/>
 <br/>
 <br/>
 <br/>
-<br/>
+
+<#include "fragments/background.ftl">
 
 <#include "fragments/coursesCRUD/header.ftl">
 
@@ -217,6 +220,7 @@
                         purchase!</h3></div>
                     <div class="col-sm-1"></div>
                 </div>
+                <br/>
             </div>
         </div>
     </div>
@@ -237,6 +241,7 @@
                     <div><h3 class="col-sm-10" style="color: rgb(34,34,34);">Try to use different courses!</h3></div>
                     <div class="col-sm-1"></div>
                 </div>
+                <br/>
             </div>
         </div>
     </div>
@@ -257,6 +262,7 @@
                     <div><h3 class="col-sm-10" style="color: red;">Don't change data in table!</h3></div>
                     <div class="col-sm-1"></div>
                 </div>
+                <br/>
             </div>
         </div>
     </div>

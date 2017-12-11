@@ -44,6 +44,5 @@ function validateIn() {
     if (!validatePasswordIn()) {
         isValid = false;
     }
-
     return isValid;
 }

@@ -1,6 +1,7 @@
 package by.bsuir.myappspringboot.controller;
 
 import by.bsuir.myappspringboot.controller.util.AttributeSetter;
+import by.bsuir.myappspringboot.entity.Course;
 import by.bsuir.myappspringboot.entity.CourseTimetable;
 import by.bsuir.myappspringboot.entity.User;
 import by.bsuir.myappspringboot.service.CourseTimetableService;
@@ -42,15 +43,15 @@ public class CourseTimetableController {
 
         List<CourseTimetable> availCourses = courseTimetableService.userAvailibleCourses(user);
 
-        if (availCourses.size() == 0){
+        if (availCourses.size() == 0) {
             request.getSession().removeAttribute("user");
             User upUser = courseTimetableService.findByLoginUser(user.getLogin());
             request.getSession().setAttribute("user", upUser);
 
-            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(),20); //20 курсов доступных нет
+            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(), 20); //20 курсов доступных нет
             return "startUser";
-        }  else {
-            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(),0);
+        } else {
+            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(), 0);
             AttributeSetter.setAvailibleCources(model, availCourses, 0);
             return "joinCourses";
         }
@@ -62,17 +63,17 @@ public class CourseTimetableController {
 
         List<CourseTimetable> userLeaveCourses = courseTimetableService.getUserCoursesToLeave(user);
 
-        if (userLeaveCourses.size() == 0){
+        if (userLeaveCourses.size() == 0) {
             request.getSession().removeAttribute("user");
             User upUser = courseTimetableService.findByLoginUser(user.getLogin());
             request.getSession().setAttribute("user", upUser);
 
-            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(),30); //30 курсов доступных для удаления нет
+            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(), 30); //30 курсов доступных для удаления нет
 
             return "startUser";
         } else {
 
-            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(),0);
+            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(), 0);
             AttributeSetter.setAvailibleCources(model, userLeaveCourses, 0);
 
             return "leaveCourses";
@@ -82,42 +83,42 @@ public class CourseTimetableController {
 
 
     @PostMapping("/add-course")
-    public String addCourse(Model model, HttpServletRequest request,@RequestParam ArrayList<Integer> listCourses) {
+    public String addCourse(Model model, HttpServletRequest request, @RequestParam ArrayList<Integer> listCourses) {
         User user = (User) request.getSession().getAttribute("user");
 
-        int checkData = courseTimetableService.joinUserCourses(user,listCourses);
+        int checkData = courseTimetableService.joinUserCourses(user, listCourses);
 
-        if(checkData != 0){
+        if (checkData != 0) {
 
             List<CourseTimetable> availCourses = courseTimetableService.userAvailibleCourses(user);
-            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(),0);
-            AttributeSetter.setAvailibleCources(model,availCourses,checkData);
+            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(), 0);
+            AttributeSetter.setAvailibleCources(model, availCourses, checkData);
             return "joinCourses";
 
-        }else {
+        } else {
             request.getSession().removeAttribute("user");
             User upUser = courseTimetableService.findByLoginUser(user.getLogin());
             request.getSession().setAttribute("user", upUser);
-            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(),10);
+            AttributeSetter.setUserAttributes(model, upUser.getBalance(), upUser.getName(), 10);
             return "startUser";
         }
 
     }
 
     @PostMapping("/delete-course")
-    public String deleteCourse(Model model, HttpServletRequest request,@RequestParam ArrayList<Integer> idCourses) {
+    public String deleteCourse(Model model, HttpServletRequest request, @RequestParam ArrayList<Integer> idCourses) {
         User user = (User) request.getSession().getAttribute("user");
 
 
-        int checkData = courseTimetableService.leaveUserCourses(user,idCourses);
-        if(checkData != 0) {
+        int checkData = courseTimetableService.leaveUserCourses(user, idCourses);
+        if (checkData != 0) {
 
-            List<CourseTimetable> availCourses =  courseTimetableService.getUserCoursesToLeave(user);
-            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(),0);
-            AttributeSetter.setAvailibleCources(model,availCourses,checkData);
+            List<CourseTimetable> availCourses = courseTimetableService.getUserCoursesToLeave(user);
+            AttributeSetter.setUserAttributes(model, user.getBalance(), user.getName(), 0);
+            AttributeSetter.setAvailibleCources(model, availCourses, checkData);
 
             return "leaveCourses";
-        }else{
+        } else {
 
             request.getSession().removeAttribute("user");
             User upUser = courseTimetableService.findByLoginUser(user.getLogin());
@@ -126,6 +127,15 @@ public class CourseTimetableController {
         }
 
         return "startUser";
+    }
+
+    @GetMapping("/get-visited-courses")
+    @ResponseBody
+    public List<CourseTimetable> getVisitedCourses(HttpServletRequest request) {
+
+        User user = (User) request.getSession().getAttribute("user");
+
+        return courseTimetableService.getMyCourses(user);
     }
 
 }

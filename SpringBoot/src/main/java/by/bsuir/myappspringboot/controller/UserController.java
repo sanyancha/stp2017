@@ -1,23 +1,19 @@
 package by.bsuir.myappspringboot.controller;
 
 import by.bsuir.myappspringboot.controller.util.AttributeSetter;
+import by.bsuir.myappspringboot.entity.Course;
 import by.bsuir.myappspringboot.entity.CourseTimetable;
 import by.bsuir.myappspringboot.entity.User;
 import by.bsuir.myappspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -36,7 +32,6 @@ public class UserController {
             User logUser = userService.getUser(login);
             AttributeSetter.setUserAttributes(model, logUser.getBalance(), logUser.getName(),0);
             request.getSession().setAttribute("user", logUser);
-
             return "redirect:/user-home";
         }
 
@@ -46,7 +41,9 @@ public class UserController {
     @ResponseBody
     public User getInfo(HttpServletRequest request) {
 
-        return (User) request.getSession().getAttribute("user");
+        User myUser = (User) request.getSession().getAttribute("user");
+
+        return myUser;
     }
 
     @PostMapping("/register")
@@ -83,12 +80,98 @@ public class UserController {
         return "startUser";
     }
 
-
-    @GetMapping("/get-visited-courses")
+    @PostMapping("/take-in-balance")
     @ResponseBody
-    public String getVisitedCourses(HttpServletRequest request) {
+    public int addBalance(@RequestParam("card") String card, @RequestParam("balance") String balance, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        int check = userService.addBalance(user,card,balance);
 
+        request.getSession().removeAttribute("user");
 
-        return "String get visited courses";
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+
+        return check;
     }
+
+    @PostMapping("/take-out-balance")
+    @ResponseBody
+    public int leaveBalance(@RequestParam("card") String card, @RequestParam("balance") String balance,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        int check = userService.leaveBalance(user,card,balance);
+
+        request.getSession().removeAttribute("user");
+
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+        return check;
+    }
+
+    @PostMapping("/setting-name")
+    @ResponseBody
+    public int changeName(@RequestParam("name") String name,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        userService.changeName(user,name);
+
+        request.getSession().removeAttribute("user");
+
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+
+        return 0;
+    }
+
+    @PostMapping("/setting-mobile")
+    @ResponseBody
+    public int changeMobile(@RequestParam("mobile") String mobile,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        userService.changeMobile(user,mobile);
+
+        request.getSession().removeAttribute("user");
+
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+
+        return 0;
+    }
+
+    @PostMapping("/setting-login")
+    @ResponseBody
+    public int changeLogin(@RequestParam("login") String login,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        int check = userService.changeLogin(user,login);
+
+        request.getSession().removeAttribute("user");
+
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+
+        return check;
+    }
+
+    @PostMapping("/setting-password")
+    @ResponseBody
+    public int changePassword(@RequestParam("oldPas") String oldPas,@RequestParam("newPas") String newPas,HttpServletRequest request) {
+        int check;
+        User user = (User) request.getSession().getAttribute("user");
+        check = userService.changePassword(user,oldPas,newPas);
+
+        request.getSession().removeAttribute("user");
+
+        User upUser = userService.getUser(user.getLogin());
+        request.getSession().setAttribute("user", upUser);
+
+        return check;
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model, HttpServletRequest request){
+        AttributeSetter.setAttributes(model,false,0);
+        System.out.println("logout");
+        request.getSession(false).invalidate();
+        return "startPage";
+    }
+
+
+
 }

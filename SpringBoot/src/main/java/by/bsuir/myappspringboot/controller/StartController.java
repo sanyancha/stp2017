@@ -20,7 +20,8 @@ public class StartController {
     @RequestMapping("/")
     public String privet(Model model, HttpServletRequest request){
         AttributeSetter.setAttributes(model,false,0);
-        request.getSession().removeAttribute("user");
+        /*request.getSession().removeAttribute("user");
+        request.getSession(false).invalidate();*/
         return "startPage";
     }
 

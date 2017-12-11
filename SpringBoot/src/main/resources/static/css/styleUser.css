@@ -12,3 +12,27 @@
 #account-info > div > div > div > form > div > p{
     font-size: large;
 }
+
+#balance-operation{
+    margin-top: 15%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+#settings{
+    margin-top: 15%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.addon-user{
+    background-color: rgb(34,34,34);
+    color: rgb(157,157,157);
+}
+
+#shest {
+    -moz-appearance: textfield;
+}
+#shest::-webkit-inner-spin-button {
+    display: none;
+}

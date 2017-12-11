@@ -10,4 +10,10 @@ public interface UserService {
     boolean signIn(String login, String password);
     User getUser(String login);
     Set<CourseTimetable> getTimetables(String login);
+    int addBalance(User user, String card, String balance);
+    int leaveBalance(User user, String card, String balance);
+    void changeName(User user,String name);
+    void changeMobile(User user,String mobile);
+    int changeLogin(User user,String login);
+    int changePassword(User user,String oldPasword,String newPassword);
 }

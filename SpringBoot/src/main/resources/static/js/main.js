@@ -4,7 +4,13 @@ function scrollSituation()
 	$("#collapse2").collapse('hide');
 	$("#collapse1").collapse('show');
 	var element = document.getElementById("situation");
-	element.scrollIntoView(true);
+    $('html, body').animate({
+        scrollTop: $(element).offset().top
+    }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = element;
+    });
 	myMap();
 
 }
@@ -14,7 +20,14 @@ function scrollContact()
 	$("#collapse1").collapse('hide');
 	$("#collapse2").collapse('show');
 	var element = document.getElementById("contact");
-	element.scrollIntoView(true);
+
+	$('html, body').animate({
+        scrollTop: $(element).offset().top
+    }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = element;
+    });
 
 }
 
@@ -59,8 +72,16 @@ function myMap() {
                          "</tr>"
                      );
                  });
-                 scrollOn('scrollOnAllCourses');
                  $("#allCources").collapse('show');
+
+                 var element = document.getElementById("scrollOnAllCourses");
+
+                 $('html, body').animate({
+                     scrollTop: $(element).offset().top
+                 }, 900, function(){
+
+                     window.location.hash = element;
+                 });
              },
              error: function () {
                  alert("Connection error");
@@ -93,8 +114,17 @@ function getSelectionCourses() {
                         "</tr>"
                     );
                 });
-                scrollOn('scrollOnSelectionOpen');
+
                 $("#selectionOpen").collapse('show');
+
+                var element = document.getElementById("scrollOnSelectionOpen");
+
+                $('html, body').animate({
+                    scrollTop: $(element).offset().top
+                }, 900, function(){
+
+                    window.location.hash = element;
+                });
             },
             error: function () {
                 alert("Connection error");
@@ -129,8 +159,17 @@ function getPlannedCourses() {
                         "</tr>"
                     );
                 });
-                scrollOn('scrollOnPlanned');
+
                 $("#plannedCourses").collapse('show');
+
+                var element = document.getElementById("scrollOnPlanned");
+
+                $('html, body').animate({
+                    scrollTop: $(element).offset().top
+                }, 900, function(){
+
+                    window.location.hash = element;
+                });
             },
             error: function () {
                 alert("Connection error");
@@ -142,5 +181,11 @@ function getPlannedCourses() {
 function scrollOn(idObj)
 {
     var element = document.getElementById(idObj);
-    element.scrollIntoView(true);
+
+    $('html, body').animate({
+        scrollTop: $(element).offset().top
+    }, 900, function(){
+
+        window.location.hash = element;
+    });
 }

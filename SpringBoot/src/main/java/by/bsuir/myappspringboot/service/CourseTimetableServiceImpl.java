@@ -9,6 +9,7 @@ import by.bsuir.myappspringboot.service.util.dateFormatCourseTimetable;
 import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -78,6 +79,7 @@ public class CourseTimetableServiceImpl implements CourseTimetableService {
         return userRepository.findByLogin(loginUser);
     }
 
+    @Transactional
     @Override
     public int joinUserCourses(User user, ArrayList<Integer> listCourses) {
         List<CourseTimetable> ct = new ArrayList<>();
@@ -170,6 +172,7 @@ public class CourseTimetableServiceImpl implements CourseTimetableService {
         return courseTimetableRepository.findAllByOpenAndUsers(true, user);
     }
 
+    @Transactional
     @Override
     public int leaveUserCourses(User user, ArrayList<Integer> idCourses) {
         List<CourseTimetable> ct = new ArrayList<>();
@@ -210,6 +213,8 @@ public class CourseTimetableServiceImpl implements CourseTimetableService {
                 }
             }
 
+
+
             user.setTimetables(userSet);
             double balanceAfter = user.getBalance() + prise;
             user.setBalance(balanceAfter);
@@ -218,5 +223,12 @@ public class CourseTimetableServiceImpl implements CourseTimetableService {
         }
 
         return outCheck;
+    }
+
+    @Override
+    public List<CourseTimetable> getMyCourses(User user) {
+        List<CourseTimetable> courses = courseTimetableRepository.findAllByUsers(user);
+        List<CourseTimetable> coursesChange = dateFormatCourseTimetable.changeDateCourseTimetable(courses);
+        return coursesChange;
     }
 }

@@ -18,6 +18,9 @@ public class User implements Serializable {
     private double balance;
 
     @JsonIgnore
+    private Set<UserPaynment> userPaynments;
+
+    @JsonIgnore
     private Set<CourseTimetable> timetables;
 
     public User() {
@@ -95,5 +98,14 @@ public class User implements Serializable {
                 ", mobile='" + mobile + '\'' +
                 ", balance=" + balance +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<UserPaynment> getUserPaynments() {
+        return userPaynments;
+    }
+
+    public void setUserPaynments(Set<UserPaynment> userPaynments) {
+        this.userPaynments = userPaynments;
     }
 }

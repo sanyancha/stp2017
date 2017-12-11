@@ -16,56 +16,67 @@
 
 <#include "fragments/background.ftl">
 
+<br id="top"/>
 <br/>
- <#--Классы navbar и navbar-default &ndash;&gt;-->
+<br/>
+<#--Классы navbar и navbar-default &ndash;&gt;-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-     <#--Контейнер &ndash;&gt;-->
-    <div class="container-fluid">
-         <#--Заголовок &ndash;&gt;-->
+<#--Контейнер &ndash;&gt;-->
+    <div class="container-fluid" style="padding-left: 0px;">
+    <#--Заголовок &ndash;&gt;-->
         <div class="navbar-header">
-            <#-- Кнопка «Гамбургер» &ndash;&gt;-->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
+        <#-- Кнопка «Гамбургер» &ndash;&gt;-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main"
+                    aria-expanded="false">
                 <span class=sr-only>Toggle navigation</span>
                 <span class="icon-bar" style="background-color: rgb(32,72,72);"></span>
                 <span class="icon-bar" style="background-color: rgb(32,72,72);"></span>
                 <span class="icon-bar" style="background-color: rgb(32,72,72);"></span>
             </button>
-             <#--Бренд или название сайта &ndash;&gt;-->
+        <#--Бренд или название сайта &ndash;&gt;-->
 
-            <a href="/"><img src="images/logotype.png" alt="Logotip" id="logo">Relax Laboratory</a>
+            <div class="navbar-brand" style="padding-top: 15px;">
+                <a href="/"
+                   style="background-image: url('../images/logotype.png');zoom: 100%;background-size: 55px;padding-bottom: 10px;padding-top: 10px;"><span
+                        style='padding-right: 48px;'> </span> </a>
+                <a style="color: rgb(32,72,72);" href="/"><img src="images/logotype.png" alt="Logotip"
+                                                                        id="logo" height="25px">Relax Laboratory</a>
+            </div>
         </div>
-         <#--Основная часть меню &ndash;&gt;-->
+    <#--Основная часть меню &ndash;&gt;-->
         <div class="collapse navbar-collapse" id="navbar-main">
 
-             <#--Содержимое основной части &ndash;&gt;-->
+        <#--Содержимое основной части &ndash;&gt;-->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown ">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cources <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
-                <ul class="dropdown-menu background-element">
-                    <li >
-                        <a onclick="getAllCourses()" data-toggle="collapse">
-                            <span class="glyphicon glyphicon-list"></span>
-                            &nbsp;All available
-                        </a>
-                    </li>
-                    <li >
-                        <a onclick="getSelectionCourses()" data-toggle="collapse">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            &nbsp;Selection open
-                        </a>
-                    </li>
-                    <li>
-                        <a onclick="getPlannedCourses()" data-toggle="collapse">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                            &nbsp;Planned
-                        </a>
-                    </li>
-                </ul>
-                </li>
-                <li class="dropdown " >
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Join <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cources <span
+                            class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                     <ul class="dropdown-menu background-element">
-                        <li >
+                        <li>
+                            <a onclick="getAllCourses()" data-toggle="collapse">
+                                <span class="glyphicon glyphicon-list"></span>
+                                &nbsp;All available
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="getSelectionCourses()" data-toggle="collapse">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                &nbsp;Selection open
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="getPlannedCourses()" data-toggle="collapse">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                &nbsp;Planned
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown ">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Join <span
+                            class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
+                    <ul class="dropdown-menu background-element">
+                        <li>
                             <a href="#" id="on-enter">
                                 <span class="glyphicon glyphicon-log-in "></span>
                                 &nbsp;Sign in
@@ -80,7 +91,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">About us  <span class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">About us <span
+                            class="glyphicon glyphicon-chevron-down spin-chevron" id="glifup"></span></a>
                     <ul class="dropdown-menu background-element">
                         <li>
                             <a href="javascript:scrollSituation();">
@@ -96,7 +108,7 @@
                         </li>
                     </ul>
                 </li>
-                <li ><a href="#" id="on-help">Help&nbsp;&nbsp;</a></li>
+                <li><a href="#" id="on-help">Help&nbsp;&nbsp;</a></li>
         </div>
     </div>
 </nav>
@@ -186,7 +198,9 @@
                 <tbody class="all-courses-list">
                 </tbody>
             </table>
-            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#allCources">Close list courses</button>
+            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#allCources">Close
+                list courses
+            </button>
         </div>
         <div class="col-sm-2 col-xs-2 sidenav">
         </div>
@@ -221,7 +235,9 @@
                 <tbody class="open-courses-list">
                 </tbody>
             </table>
-            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#selectionOpen">Close selection open courses</button>
+            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#selectionOpen">
+                Close selection open courses
+            </button>
         </div>
         <div class="col-sm-2 col-xs-2 sidenav">
         </div>
@@ -256,7 +272,9 @@
                 <tbody class="planned-courses-list">
                 </tbody>
             </table>
-            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#plannedCourses">Close planned courses</button>
+            <button type="button" class="btn btn-my center-block" data-toggle="collapse" data-target="#plannedCourses">
+                Close planned courses
+            </button>
         </div>
         <div class="col-sm-2 col-xs-2 sidenav">
         </div>
@@ -281,7 +299,7 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body ">
-                            <#--<div id="map" style="width: 100%; height: 400px;">
+                        <#--<div id="map" style="width: 100%; height: 400px;">
                                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0WtTVzOHYfSCBZzYZc5eFTuXirqAyHdg&callback=myMap"></script>
                             </div>-->
                         </div>
@@ -300,7 +318,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading ">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" id="contact">Contact information</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" id="contact">Contact
+                            information</a>
                     </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse">
@@ -345,8 +364,11 @@
 
 <footer class="container-fluid text-center background-element ndra-container" id="foot">
     <br>
-    <p class="style-text"><a href="/">Home</a> | <a href="#" id="on-enter1">Sign in</a> | <a href="#" id="on-registration1">Sign up</a> | <a href="#" id="on-help1">Help</a> </p>
-    <p class="style-text">© ${nowYear} RelaxLaboratory.com | All rights reserved | Contact number <span class="glyphicon glyphicon-phone-alt"></span> 42-78-58</p>
+    <p class="style-text"><a href="/">Home</a> | <a href="#" id="on-enter1">Sign in</a> | <a href="#"
+                                                                                             id="on-registration1">Sign
+        up</a> | <a href="#" id="on-help1">Help</a></p>
+    <p class="style-text">© ${nowYear} RelaxLaboratory.com | All rights reserved | Contact number <span
+            class="glyphicon glyphicon-phone-alt"></span>44-14-42</p>
 </footer>
 
 <!--Модальное окно входа-->
@@ -366,14 +388,15 @@
                         <p class="error" id="mailInErr"><br/></p>
                         <label class="control-label col-sm-2" for="name">Login:</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="mailIn" placeholder="Enter eMail" name="login">
+                            <input type="email" class="form-control" id="mailIn" placeholder="Enter eMail" name="login" autocomplete="on">
                         </div>
                     </div>
                     <div class="form-group">
                         <p class="error" id="passwordInErr"><br/></p>
                         <label class="control-label col-sm-2" for="pwd">Password:</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="passwordIn" placeholder="Enter password" name="password">
+                            <input type="password" class="form-control" id="passwordIn" placeholder="Enter password"
+                                   name="password" autocomplete="on">
                         </div>
                     </div>
                     <div class="form-group">
@@ -381,11 +404,13 @@
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-default">Sign in <span class="glyphicon glyphicon-off"></span></button>
+                                        <button type="submit" class="btn btn-default">Sign in <span
+                                                class="glyphicon glyphicon-off"></span></button>
                                         <br>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="reset" class="btn btn-default">Clear <span class="glyphicon glyphicon-trash"></span></button>
+                                        <button type="reset" class="btn btn-default">Clear <span
+                                                class="glyphicon glyphicon-trash"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -432,7 +457,8 @@
 
                         <label class="control-label col-xs-3" for="firstName">Name:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="firstName" placeholder="Enter your name" name="name" value="${name}">
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter your name"
+                                   name="name" value="${name}">
                         </div>
 
                     </div>
@@ -441,7 +467,8 @@
 
                         <label class="control-label col-xs-3" for="inputEmail">Email:</label>
                         <div class="col-xs-9">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter eMail" name="mail" value="${email}">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter eMail"
+                                   name="mail" value="${email}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -449,29 +476,34 @@
 
                         <label class="control-label col-xs-3" for="inputPassword">Password:</label>
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password" name="apassword" value="${apassword}">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password"
+                                   name="apassword" value="${apassword}">
                         </div>
                     </div>
                     <div class="form-group">
                         <p class="error" id="confirmErr"><br/></p>
                         <label class="control-label col-xs-3" for="confirmPassword">Repeate password:</label>
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password again" name="repPassword" value="${repPassword}">
+                            <input type="password" class="form-control" id="confirmPassword"
+                                   placeholder="Enter password again" name="repPassword" value="${repPassword}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <p class="error" id="phoneErr"><br/></p>
+                        <p class="error" class="btn btn-default" id="phoneErr"><br/></p>
                         <label class="control-label col-xs-3" for="phoneNumber">Number:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your number phone" name="phone" value="${phone}">
+                            <input type="tel" class="form-control" id="phoneNumber"
+                                   placeholder="Enter your number phone" name="phone" value="${phone}">
                         </div>
                     </div>
                     <p class="error" id="equalErr"><br/></p>
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-default">Submit <span class="glyphicon glyphicon-ok"></span></button>
-                                <button type="reset" class="btn btn-default">Clear <span class="glyphicon glyphicon-trash"></span></button>
+                                <button type="submit" class="btn btn-default">Submit <span
+                                        class="glyphicon glyphicon-ok"></span></button>
+                                <button type="reset" class="btn btn-default">Clear <span
+                                        class="glyphicon glyphicon-trash"></span></button>
                             </div>
                         </div>
                     </div>
@@ -497,7 +529,6 @@
 </script>
 
 
-
 <!--Модальное окно помощи-->
 
 <div id="help" class="modal fade" role="dialog">
@@ -520,22 +551,26 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="pwd">Password:</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="pwd" placeholder="Input password" name="pwd">
+                            <input type="password" class="form-control" id="pwd" placeholder="Input password"
+                                   name="pwd">
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="5" id="comment" placeholder="Input your question"></textarea>
+                        <textarea class="form-control" rows="5" id="comment"
+                                  placeholder="Input your question"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-default">Submit <span class="glyphicon glyphicon-ok"></span></button>
+                                        <button type="submit" class="btn btn-default">Submit <span
+                                                class="glyphicon glyphicon-ok"></span></button>
                                         <br>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="reset" class="btn btn-default">Clear <span class="glyphicon glyphicon-trash"></span></button>
+                                        <button type="reset" class="btn btn-default">Clear <span
+                                                class="glyphicon glyphicon-trash"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -565,7 +600,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         document.getElementById("mailInErr").innerHTML = "Such eMail or password doesn'n exist";
         $("#enter").modal("show");
     });
@@ -578,7 +613,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         document.getElementById("emailErr").innerHTML = "*Such login(eMail) already exist";
 
         $("#registration").modal("show");
@@ -592,7 +627,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         document.getElementById("phoneErr").innerHTML = "*Such phone already exist";
 
         $("#registration").modal("show");

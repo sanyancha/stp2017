@@ -25,4 +25,5 @@ public interface CourseTimetableRepository extends JpaRepository<CourseTimetable
 
     List<CourseTimetable> findAllByOpenAndUsers(boolean open,User user);
 
+    List<CourseTimetable> findAllByUsers(User user);
 }
